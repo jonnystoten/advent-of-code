@@ -1,52 +1,54 @@
-object Direction extends Enumeration {
-  type Direction = Value
-  val Up, Down, Left, Right = Value
+trait Direction {
+  def nextDirection: Direction
+  def move(position: Position): Position
+}
+
+object Up extends Direction {
+  def nextDirection = Left
+  def move(p: Position) = Position(p.x, p.y + 1)
+}
+
+object Left extends Direction {
+  def nextDirection = Down
+  def move(p: Position) = Position(p.x - 1, p.y)
+}
+
+object Down extends Direction {
+  def nextDirection = Right
+  def move(p: Position) = Position(p.x, p.y - 1)
+}
+
+object Right extends Direction {
+  def nextDirection = Up
+  def move(p: Position) = Position(p.x + 1, p.y)
 }
 
 case class Position(x: Int, y: Int) {
-  def move(dir: Direction.Value): Position =
-    dir match {
-      case Direction.Up => Position(x, y + 1)
-      case Direction.Right => Position(x + 1, y)
-      case Direction.Down => Position(x, y - 1)
-      case Direction.Left => Position(x - 1, y)
-    }
+  def move(dir: Direction): Position = dir.move(this)
 }
 
-def nextDirection(dir: Direction.Value): Direction.Value =
-  dir match {
-    case Direction.Up => Direction.Left
-    case Direction.Left => Direction.Down
-    case Direction.Down => Direction.Right
-    case Direction.Right => Direction.Up
-  }
-
 def part1(location: Int): Int = {
-  def loop(acc: Position, current: Int, layer: Int, dir: Direction.Value): Position = {
+  def loop(acc: Position, current: Int, layer: Int, dir: Direction): Position = {
     if (current == location) acc
     else {
       val endOfDir = dir match {
-        case Direction.Up =>
-          acc.y == layer
-        case Direction.Right =>
-          acc.x == layer + 1
-        case Direction.Down =>
-          acc.y == -layer
-        case Direction.Left =>
-          acc.x == -layer
+        case Up => acc.y == layer
+        case Right => acc.x == layer + 1
+        case Down => acc.y == -layer
+        case Left => acc.x == -layer
       }
 
       if (endOfDir) {
         val nextLayer =
-          if (dir == Direction.Right) layer + 1
+          if (dir == Right) layer + 1
           else layer
-        loop(acc.move(nextDirection(dir)), current + 1, nextLayer, nextDirection(dir))
+        loop(dir.nextDirection.move(acc), current + 1, nextLayer, dir.nextDirection)
       }
       else loop(acc.move(dir), current + 1, layer, dir)
     }
   }
 
-  val pos = loop(Position(0, 0), 1, 0, Direction.Right)
+  val pos = loop(Position(0, 0), 1, 0, Right)
   Math.abs(pos.x) + Math.abs(pos.y)
 }
 
@@ -72,33 +74,29 @@ def part2(target: Int): Int = {
       m(Position(position.x - 1, position.y - 1))
   }
 
-  def loop(pos: Position, layer: Int, dir: Direction.Value): Int = {
+  def loop(pos: Position, layer: Int, dir: Direction): Int = {
     val memVal = getMemVal(pos)
     if (memVal > target) memVal
     else {
       memory = memory.updated(pos, memVal)
       val endOfDir = dir match {
-        case Direction.Up =>
-          pos.y == layer
-        case Direction.Right =>
-          pos.x == layer + 1
-        case Direction.Down =>
-          pos.y == -layer
-        case Direction.Left =>
-          pos.x == -layer
+        case Up => pos.y == layer
+        case Right => pos.x == layer + 1
+        case Down => pos.y == -layer
+        case Left => pos.x == -layer
       }
 
       if (endOfDir) {
         val nextLayer =
-          if (dir == Direction.Right) layer + 1
+          if (dir == Right) layer + 1
           else layer
-        loop(pos.move(nextDirection(dir)), nextLayer, nextDirection(dir))
+        loop(dir.nextDirection.move(pos), nextLayer, dir.nextDirection)
       }
       else loop(pos.move(dir), layer, dir)
     }
   }
 
-  loop(Position(1, 0), 1, Direction.Up)
+  loop(Position(1, 0), 1, Up)
 }
 
 part2(312051)
