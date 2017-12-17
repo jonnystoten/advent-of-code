@@ -4,7 +4,8 @@ object Main extends App {
   val day = args(0).toInt
   var input = Source.fromFile(s"input/$day.txt").mkString.trim
   val solver = day match {
-    case 1 => new InverseCaptcha()
+    case 1 => new InverseCaptcha
+    case 2 => new SpreadsheetChecksum
   }
   println(
    s"""

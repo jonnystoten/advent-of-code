@@ -1,7 +1,8 @@
 import org.scalatest.{FlatSpec, Matchers}
 
-class InverseCaptchaSuite extends FlatSpec with Matchers {
-  val solver = new InverseCaptcha()
+class InverseCaptchaSpec extends FlatSpec with Matchers {
+  val solver = new InverseCaptcha
+
   "part1" should "match given examples" in {
     assert(solver.part1("1122") === 3)
     assert(solver.part1("1111") === 4)
