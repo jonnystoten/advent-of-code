@@ -6,6 +6,9 @@ object Main extends App {
   val solver = day match {
     case 1 => new InverseCaptcha
     case 2 => new SpreadsheetChecksum
+    case 3 => new SpiralMemory
+    case 4 => new HighEntropyPassphrases
+    case 5 => new TrampolineMaze
   }
   println(
    s"""
