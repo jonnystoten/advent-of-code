@@ -11,6 +11,8 @@ object Main extends App {
     case 3 => new SpiralMemory
     case 4 => new HighEntropyPassphrases
     case 5 => new TrampolineMaze
+    case 6 => new MemoryReallocation
+    case 7 => new RecursiveCircus
   }
   println(
    s"""

@@ -1,6 +1,6 @@
 package solvers
 
-class TrampolineMaze extends Solver {
+class TrampolineMaze extends Solver[Int] {
   def part1(input: String) : Int = {
     val instructions = input.split('\n').map(_.toInt)
     def loop(acc: Int, current: Int): Int=

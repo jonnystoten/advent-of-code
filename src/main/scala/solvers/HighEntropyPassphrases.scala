@@ -1,6 +1,6 @@
 package solvers
 
-class HighEntropyPassphrases extends Solver {
+class HighEntropyPassphrases extends Solver[Int] {
   def part1(input: String): Int = {
     val passphrases = input.split('\n')
     def isValidPassphrase(passphrase: String): Boolean = {

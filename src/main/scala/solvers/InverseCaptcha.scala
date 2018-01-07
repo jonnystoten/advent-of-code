@@ -1,6 +1,6 @@
 package solvers
 
-class InverseCaptcha extends Solver {
+class InverseCaptcha extends Solver[Int] {
   def solve(findMid: (List[Int] => Int))(input: String): Int = {
     val list = input.toList.map(c => c.asDigit)
     val mid = findMid(list)

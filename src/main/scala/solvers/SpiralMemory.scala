@@ -2,7 +2,7 @@ package solvers
 
 import scala.collection.immutable.Map
 
-class SpiralMemory extends Solver {
+class SpiralMemory extends Solver[Int] {
   trait Direction {
     def nextDirection: Direction
     def move(position: Position): Position

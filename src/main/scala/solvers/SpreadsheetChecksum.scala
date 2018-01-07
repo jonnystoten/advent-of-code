@@ -1,6 +1,6 @@
 package solvers
 
-class SpreadsheetChecksum extends Solver {
+class SpreadsheetChecksum extends Solver[Int] {
   def part1(input: String): Int = {
     def rowChecksum(row: String): Int = {
       val cols = row.split(Array[Char](' ', '\t')).map(c => c.toInt)
