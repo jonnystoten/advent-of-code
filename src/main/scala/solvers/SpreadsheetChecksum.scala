@@ -1,3 +1,5 @@
+package solvers
+
 class SpreadsheetChecksum extends Solver {
   def part1(input: String): Int = {
     def rowChecksum(row: String): Int = {

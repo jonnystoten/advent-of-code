@@ -1,3 +1,5 @@
+package solvers
+
 class TrampolineMaze extends Solver {
   def part1(input: String) : Int = {
     val instructions = input.split('\n').map(_.toInt)

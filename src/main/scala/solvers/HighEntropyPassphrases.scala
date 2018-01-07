@@ -1,3 +1,5 @@
+package solvers
+
 class HighEntropyPassphrases extends Solver {
   def part1(input: String): Int = {
     val passphrases = input.split('\n')

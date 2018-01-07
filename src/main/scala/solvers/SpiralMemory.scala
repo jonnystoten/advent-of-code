@@ -1,4 +1,6 @@
-import collection.immutable.Map
+package solvers
+
+import scala.collection.immutable.Map
 
 class SpiralMemory extends Solver {
   trait Direction {

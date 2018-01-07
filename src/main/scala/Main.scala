@@ -1,3 +1,5 @@
+import solvers._
+
 import scala.io.Source
 
 object Main extends App {

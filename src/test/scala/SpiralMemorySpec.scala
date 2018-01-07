@@ -1,4 +1,5 @@
 import org.scalatest.{FlatSpec, Matchers}
+import solvers.SpiralMemory
 
 class SpiralMemorySpec extends FlatSpec with Matchers {
   val solver = new SpiralMemory

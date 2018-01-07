@@ -1,4 +1,5 @@
 import org.scalatest.{FlatSpec, Matchers}
+import solvers.TrampolineMaze
 
 class TrampolineMazeSpec extends FlatSpec with Matchers {
   val solver = new TrampolineMaze

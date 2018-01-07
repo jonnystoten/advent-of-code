@@ -1,4 +1,5 @@
 import org.scalatest.{FlatSpec, Matchers}
+import solvers.InverseCaptcha
 
 class InverseCaptchaSpec extends FlatSpec with Matchers {
   val solver = new InverseCaptcha

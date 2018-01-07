@@ -1,4 +1,5 @@
 import org.scalatest.{FlatSpec, Matchers}
+import solvers.SpreadsheetChecksum
 
 class SpreadsheetChecksumSpec extends FlatSpec with Matchers {
   val solver = new SpreadsheetChecksum

@@ -1,4 +1,5 @@
 import org.scalatest.{FlatSpec, Matchers}
+import solvers.HighEntropyPassphrases
 
 class HighEntropyPassphrasesSpec extends FlatSpec with Matchers {
   val solver = new HighEntropyPassphrases
